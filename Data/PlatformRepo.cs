@@ -10,7 +10,7 @@ namespace PlatformService.Data
             dBContext = db;
         }
 
-        public void CreatePlatform(Platform platform)
+        public bool CreatePlatform(Platform platform)
         {
             if (platform == null)
             {
@@ -18,6 +18,7 @@ namespace PlatformService.Data
             }
 
             dBContext.Platforms.Add(platform);
+            return SaveChanges();
         }
 
         public IEnumerable<Platform> GetAllPlatforms()
