@@ -19,8 +19,8 @@ namespace PlatformService.Data
                 Console.WriteLine("Adding seed data");
                 context.Platforms.AddRange
                 (
-                    new Platform() { Name = "Dotnet", Publisher = "Micrpspft", Cost = "Free" },
-                    new Platform() { Name = "Sql Server Express", Publisher = "Micrpspft", Cost = "Free" },
+                    new Platform() { Name = "Dotnet", Publisher = "Microsoft", Cost = "Free" },
+                    new Platform() { Name = "Sql Server Express", Publisher = "Microsoft", Cost = "Free" },
                     new Platform() { Name = "DB2", Publisher = "IBM", Cost = "Free" }
                 );
                 context.SaveChanges();

@@ -31,6 +31,7 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-app.Run();
 
 PrepareDb.PopulateData(app);
+
+app.Run();
