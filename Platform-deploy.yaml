@@ -1,0 +1,24 @@
+# The API version this deployment going to use.
+# Under the cover Kubernates works with REEST APIs to create and destroy resources. 
+apiVersion: apps/v1
+# What kind it is
+kind: Deployment
+metadata:
+  name: platforms-depl
+spec:
+  # Minimum live services required at a time 
+  replicas: 1
+  # Select the app using template 1
+  selector:
+    matchLabels:
+      app: platformservice
+  # This template will be used by slector
+  template:
+    metadata:
+      labels:
+        app: platformservice
+    #Container specifications 
+    spec:
+      containers:
+        - name: platformservice
+          image: 9z/platformservice
