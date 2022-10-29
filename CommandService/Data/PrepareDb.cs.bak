@@ -1,0 +1,34 @@
+using commandService.Models;
+
+namespace commandService.Data
+{
+    public static class PrepareDb
+    {
+        public static void PopulateData(IApplicationBuilder app)
+        {
+            using (var serviceScope = app.ApplicationServices.CreateScope())
+            {
+                SeedData(serviceScope.ServiceProvider.GetService<AppDbContext>());
+            }
+        }
+
+        private static void SeedData(AppDbContext context)
+        {
+            if (!context.commands.Any())
+            {
+                Console.WriteLine("Adding seed data");
+                context.commands.AddRange
+                (
+                    new command() { Name = "Dotnet", Publisher = "Microsoft", Cost = "Free" },
+                    new command() { Name = "Sql Server Express", Publisher = "Microsoft", Cost = "Free" },
+                    new command() { Name = "DB2", Publisher = "IBM", Cost = "Free" }
+                );
+                context.SaveChanges();
+            }
+            else
+            {
+                Console.WriteLine("Already data in place");
+            }
+        }
+    }
+}

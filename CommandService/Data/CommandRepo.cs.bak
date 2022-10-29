@@ -1,0 +1,39 @@
+using commandService.Models;
+
+namespace commandService.Data
+{
+    public class commandRepo : IcommandRepo
+    {
+        private readonly AppDbContext dBContext;
+        public commandRepo(AppDbContext db)
+        {
+            dBContext = db;
+        }
+
+        public bool Createcommand(command command)
+        {
+            if (command == null)
+            {
+                throw new ArgumentNullException(nameof(command));
+            }
+
+            dBContext.commands.Add(command);
+            return SaveChanges();
+        }
+
+        public IEnumerable<command> GetAllcommands()
+        {
+            return dBContext.commands.AsEnumerable<command>();
+        }
+
+        public command Getcommand(int id)
+        {
+            return dBContext.commands.FirstOrDefault(x => x.Id == id);
+        }
+
+        public bool SaveChanges()
+        {
+            return dBContext.SaveChanges() > 0;
+        }
+    }
+}
