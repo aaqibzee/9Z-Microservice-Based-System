@@ -1,0 +1,17 @@
+# The API version this deployment going to use.
+# Under the cover Kubernates works with REEST APIs to create and destroy resources. 
+apiVersion: v1
+# What kind it is
+kind: Service
+metadata:
+  name: platformnpservice-srv
+spec:
+  type: NodePort
+  selector:
+    #Should be the name of deployemnt 
+    app: platformservice
+  ports:
+    - name: platformservice
+      protocol: TCP
+      port: 80
+      targetPort: 80

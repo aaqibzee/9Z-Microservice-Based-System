@@ -6,9 +6,9 @@ kind: Deployment
 metadata:
   name: platforms-depl
 spec:
-  # Minimum live services required at a time 
+  # Minimum numberf of live services required at a time 
   replicas: 1
-  # Select the app using template 1
+  # Select the app using template
   selector:
     matchLabels:
       app: platformservice
